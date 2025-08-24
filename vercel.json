@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/proxy/:path*",
-      "destination": "http://belize-transport33.sbs:80/:path*"
+      "destination": "n": "http://esproipingttm.top/:path*"
 },
 {
       "source": "/live/:path*",
