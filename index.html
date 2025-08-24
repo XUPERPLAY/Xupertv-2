@@ -548,7 +548,7 @@
       padding: 6px 10px;
       font-size: 0.8rem;
     }
-}
+  }
 </style>
 </head>
 <body>
@@ -721,8 +721,7 @@
     organizeChannelsByCategory: function() {
       const categories = new Set();
       this.state.channels.forEach(channel => {
-        // Aseguramos que la categoría exista y no sea una cadena vacía
-        if (channel.category_name && channel.category_name.trim() !== "") {
+        if (channel.category_name && channel.category_name.trim() !== "" && channel.category_name.toLowerCase() !== "sin categoría") {
           categories.add(channel.category_name);
         }
       });
