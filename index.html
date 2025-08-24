@@ -732,7 +732,7 @@
       
       if (this.state.searchTerm) {
         channelsToShow = this.state.channels.filter(channel => 
-          channel.name.toLowerCase().includes(this.state.searchTerm)
+          channel.name && channel.name.toLowerCase().includes(this.state.searchTerm)
         );
       } else if (this.state.currentCategory === "all") {
         channelsToShow = this.state.channels;
@@ -783,8 +783,10 @@
           
           // Detectar si el canal es de deportes para aplicar el estilo
           const sportsKeywords = ['deporte', 'sport', 'fútbol', 'basketball', 'nba', 'ufc', 'formula'];
-          const isSportChannel = sportsKeywords.some(keyword => 
-            channel.category_name.toLowerCase().includes(keyword) || channel.name.toLowerCase().includes(keyword)
+          const isSportChannel = channel.name && channel.category_name && (
+            sportsKeywords.some(keyword => 
+              channel.category_name.toLowerCase().includes(keyword) || channel.name.toLowerCase().includes(keyword)
+            )
           );
           
           channelsHTML += `
@@ -796,8 +798,8 @@
                 </button>
               </div>
               <img class="channel-logo" src="${channel.stream_icon || 'https://via.placeholder.com/80x80?text=TV'}" alt="${channel.name}">
-              <div class="channel-name">${channel.name}</div>
-              <div class="channel-category">${channel.category_name || ''}</div>
+              <div class="channel-name">${channel.name || 'Sin nombre'}</div>
+              <div class="channel-category">${channel.category_name || 'Sin categoría'}</div>
             </div>
           `;
         });
