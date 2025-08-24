@@ -753,14 +753,17 @@
         </button>
       `;
       
-      this.state.categories.forEach(category => {
-        categoriesHTML += `
-          <button class="category-btn ${this.state.currentCategory === category ? "active" : ""}" 
-                  onclick="app.setCategory('${category}')">
-            ${category}
-          </button>
-        `;
-      });
+      // Añadir una comprobación para evitar el error si la API no devuelve la categoría
+      if (this.state.categories && this.state.categories.length > 0) {
+        this.state.categories.forEach(category => {
+          categoriesHTML += `
+            <button class="category-btn ${this.state.currentCategory === category ? "active" : ""}" 
+                    onclick="app.setCategory('${category}')">
+              ${category}
+            </button>
+          `;
+        });
+      }
 
       categoriesHTML += `
         <button class="category-btn ${this.state.currentCategory === "favorites" ? "active" : ""}" 
