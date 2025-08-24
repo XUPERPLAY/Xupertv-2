@@ -548,6 +548,7 @@
       padding: 6px 10px;
       font-size: 0.8rem;
     }
+}
 </style>
 </head>
 <body>
@@ -655,8 +656,8 @@
   const app = {
     config: {
       apiUrl: "/api/proxy",
-      username: "PSG@273Res",
-      password: "0OPSGMessi24",
+      username: "a",
+      password: "a",
       liveBase: ""
     },
     
@@ -720,7 +721,8 @@
     organizeChannelsByCategory: function() {
       const categories = new Set();
       this.state.channels.forEach(channel => {
-        if (channel.category_name) {
+        // Aseguramos que la categoría exista y no sea una cadena vacía
+        if (channel.category_name && channel.category_name.trim() !== "") {
           categories.add(channel.category_name);
         }
       });
@@ -753,7 +755,6 @@
         </button>
       `;
       
-      // Añadir una comprobación para evitar el error si la API no devuelve la categoría
       if (this.state.categories && this.state.categories.length > 0) {
         this.state.categories.forEach(category => {
           categoriesHTML += `
@@ -784,7 +785,6 @@
         channelsToShow.forEach(channel => {
           const isFavorite = this.state.favorites.some(fav => fav.stream_id === channel.stream_id);
           
-          // Detectar si el canal es de deportes para aplicar el estilo
           const sportsKeywords = ['deporte', 'sport', 'fútbol', 'basketball', 'nba', 'ufc', 'formula'];
           const isSportChannel = channel.name && channel.category_name && (
             sportsKeywords.some(keyword => 
