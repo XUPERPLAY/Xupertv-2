@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/proxy/:path*",
+      "destination": "http://1.84423.xyz:8000/:path*"
+},
+{
+      "source": "/live/:path*",
+      "destination": "http://1.84423.xyz:8000/live/:path*"
+    }  
+  ]
+}
